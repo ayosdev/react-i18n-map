@@ -1,4 +1,5 @@
 import { template, defaultProps } from './utils'
+import React from 'react'
 
 export function FormattedMessage(props) {
   let { message, values, tagName: Element } = props
