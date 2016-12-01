@@ -7,7 +7,7 @@ export function template(values, message){
   return message
 }
 
-export defaultProps = {
+export let defaultProps = {
   values : {},
   tagName: 'span',
 }
