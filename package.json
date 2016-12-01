@@ -4,6 +4,7 @@
   "description": "a simple react component that maps translation object to a string literal",
   "main": "index.js",
   "scripts": {
+    "build": "babel src -d lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
