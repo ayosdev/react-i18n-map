@@ -1,18 +1,29 @@
 import { template, defaultProps } from './utils'
 import React from 'react'
 
-export function FormattedMessage(props) {
-  let { message, values, tagName: Element } = props
-  message = template(values, message)
-  return <Element>{ message }</Element>
+export class FormattedMessage extends React.Component {
+  constructor(){
+    super()
+  }
+  render() {
+    let { message, values, tagName: Element } = this.props
+    message = template(values, message)
+    return <Element>{ message }</Element>
+  }
 }
 
 FormattedMessage.defaultProps = defaultProps
 
-export function FormattedHTMLMessage(props) {
-  let { message, values, tagName: Element } = props
-  message = template(values, message)
-  return <Element>{ message }</Element>
+export class FormattedHTMLMessage extends React.Component {
+  constructor(){
+    super()
+  }
+
+  render() {
+    let { message, values, tagName: Element } = this.props
+    message = template(values, message)
+    return <Element dangerouslySetInnerHTML={ {__html: message } } />
+  }
 }
 
 FormattedHTMLMessage.defaultProps = defaultProps
