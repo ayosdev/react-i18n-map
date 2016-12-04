@@ -2,6 +2,11 @@
   "name": "react-i18n-map",
   "version": "1.0.5",
   "description": "a simple react component that maps translation object to a string literal",
+  "files": [
+    "*.md",
+    "lib",
+    "umd"
+  ],
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
