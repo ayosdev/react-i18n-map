@@ -27,21 +27,27 @@ So we copied the basic functionality of `FormattedMessage` and `FormattedHTMLMes
 
 Using this module requires [React](https://facebook.github.io/react/) and is added as peer dependencies.  It means you need to manually add react since installing this library won't install react for you. So you need to do this before consuming this module:
 
-```
+```console
 npm install react --save
+```
+
+or
+
+```console
+yarn add react
 ```
 
 ### Installing
 
-Via NPM
+**via [npm](https://www.npmjs.com/package/npm)**
 
-```
+```console
 npm install react-i18n-map --save
 ```
 
-Via Yarn
+**via [yarn](https://yarnpkg.com/)**
 
-```
+```console
 yarn add react-i18n-map
 ```
 
@@ -52,7 +58,7 @@ yarn add react-i18n-map
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/ayosdev/react-i18n-map/tags). 
 
 ## Authors
 
