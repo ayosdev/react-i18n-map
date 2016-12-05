@@ -2,8 +2,8 @@
 # react-i18n-map
 a simple react component that maps translation object to a string literal
 
-[![Build Status](https://travis-ci.org/ayosdev/react-i18n-map.svg?branch=master)](https://travis-ci.org/ayosdev/react-i18n-map) 
-[![npm version](https://badge.fury.io/js/react-i18n-map.svg)](https://badge.fury.io/js/react-i18n-map)
+[![Build Status](https://travis-ci.org/ayosdev/react-i18n-map.svg?branch=master)](https://travis-ci.org/ayosdev/react-i18n-map)
+[![npm](https://img.shields.io/npm/v/react-i18n-map.svg?style=flat)](https://github.com/ayosdev/react-i18n-map/)
 
 ## Getting Started
 
