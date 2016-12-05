@@ -21,6 +21,11 @@ describe('template', () => {
 		expect(actual).toBe('hello world')
 	})
 
+  test('returns interpolated message with spaces', () => {
+    const actual = template('hello {   foo   }', { foo: 'world'})
+    expect(actual).toBe('hello world')
+  })
+
 	test('does not throw if value is not an object', () => {
 		const actual = template('hello world', 'test')
 		expect(actual).toBe('hello world')
