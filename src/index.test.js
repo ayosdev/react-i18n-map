@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormattedMessage, FormattedHTMLMessage } from './index'
-import { shallow, render } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 describe('FormattedMessage', () => {
 
@@ -24,12 +24,19 @@ describe('FormattedMessage', () => {
 describe('FormattedHTMLMessage', () => {
 
   test('return blank message', () => {
-    let wrapper = render(<FormattedHTMLMessage />);
+    let wrapper = mount(<FormattedHTMLMessage />);
     expect(wrapper.text()).toBe('')
   })
 
+  it('allows us to set props', () => {
+    const wrapper = mount(<FormattedHTMLMessage message="heya" />);
+    expect(wrapper.props().message).toBe("heya");
+    wrapper.setProps({ message: "foo" });
+    expect(wrapper.props().message).toBe("foo");
+  });
+
   test('return interpolated message', () => {
-    let wrapper = render(<FormattedHTMLMessage message="hello {foo}, yo {bar}" values={ { foo: 'world', bar: 'chris'} } />);
+    let wrapper = mount(<FormattedHTMLMessage message="hello {foo}, yo {bar}" values={ { foo: 'world', bar: 'chris'} } />);
     expect(wrapper.text()).toBe('hello world, yo chris')
   })
 
