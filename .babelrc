@@ -1,6 +1,3 @@
 {
-  "presets": ["latest", "react"],
-  "ignore": [
-    "*.test.js"
-  ]
+  "presets": ["latest", "react"]
 }
