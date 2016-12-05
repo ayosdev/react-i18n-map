@@ -27,3 +27,10 @@ export class FormattedHTMLMessage extends React.Component {
 }
 
 FormattedHTMLMessage.defaultProps = defaultProps
+
+let ReactI18nMap = {
+  FormattedMessage
+  , FormattedHTMLMessage
+}
+
+export default ReactI18nMap
