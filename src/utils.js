@@ -1,5 +1,9 @@
-export function template(values, message){
-  if (Object.keys(values).length > 0) {
+function isObject(obj) {
+  return obj === Object(obj);
+};
+
+export function template(message, values = {}){
+  if (isObject(values) && Object.keys(values).length > 0) {
     Object.keys(values).forEach((item) => {
       message = message.split(`{${item}}`).join(values[item])
     })
