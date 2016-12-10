@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>React-i18n-map by ayosdev</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>React-i18n-map</h1>
+        <h2>a simple react component that maps translation object to a string literal</h2>
+        <a href="https://github.com/ayosdev/react-i18n-map" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="react-i18n-map" class="anchor" href="#react-i18n-map" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>react-i18n-map</h1>
+
+<p>a simple react component that maps translation object to a string literal</p>
+
+<p><a href="https://travis-ci.org/ayosdev/react-i18n-map"><img src="https://img.shields.io/travis/ayosdev/react-i18n-map.svg" alt="Travis"></a>
+<a href="https://github.com/ayosdev/react-i18n-map/"><img src="https://img.shields.io/npm/v/react-i18n-map.svg?style=flat" alt="npm"></a>
+<a href="https://codecov.io/gh/ayosdev/react-i18n-map"><img src="https://codecov.io/gh/ayosdev/react-i18n-map/branch/master/graph/badge.svg" alt="codecov"></a></p>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<p>This is attempt for transitioning an app using react 0.13.3 to react 15.x.x.  We were using react-intl v1 before and wanted to simplify transition and just copied the public api for FormatMessage and FormatHTMLMessage.   We were getting a lot of <a href="https://github.com/yahoo/react-intl/issues/619">warnings</a> due to our upgrade from v1 to v2. </p>
+
+<p>So we copied the basic functionality of <code>FormattedMessage</code> and <code>FormattedHTMLMessage</code> from react-intl and we found out we could greatly simplify this just wrote this from scratch.</p>
+
+<h4>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic usage:</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">&lt;</span>FormattedMessage message<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>Hello World<span class="pl-pds">"</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span></pre></div>
+
+<h4>
+<a id="interpolation" class="anchor" href="#interpolation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Interpolation:</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">&lt;</span>FormattedMessage message<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>This is {foo} and this is {bar}<span class="pl-pds">"</span></span> values<span class="pl-k">=</span>{ foo<span class="pl-k">:</span> <span class="pl-c1">1</span>, bar<span class="pl-k">:</span> <span class="pl-c1">2</span> } <span class="pl-k">/</span><span class="pl-k">&gt;</span></pre></div>
+
+<h4>
+<a id="with-html" class="anchor" href="#with-html" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>With html</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">&lt;</span>FormattedHTMLMessage message<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>This is {foo} &lt;em&gt;and&lt;/em&gt; this is {bar}<span class="pl-pds">"</span></span> values<span class="pl-k">=</span>{ foo<span class="pl-k">:</span> <span class="pl-c1">1</span>, bar<span class="pl-k">:</span> <span class="pl-c1">2</span> } <span class="pl-k">/</span><span class="pl-k">&gt;</span></pre></div>
+
+<h3>
+<a id="prerequisites" class="anchor" href="#prerequisites" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Prerequisites</h3>
+
+<p>Using this module requires <a href="https://facebook.github.io/react/">React</a> and is added as peer dependencies.  It means you need to manually add react since installing this library won't install react for you. So you need to do this before consuming this module:</p>
+
+<div class="highlight highlight-text-shell-session"><pre><span class="pl-mo">npm install react --save</span></pre></div>
+
+<p>or</p>
+
+<div class="highlight highlight-text-shell-session"><pre><span class="pl-mo">yarn add react</span></pre></div>
+
+<h3>
+<a id="installing" class="anchor" href="#installing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing</h3>
+
+<p><strong>via <a href="https://www.npmjs.com/package/npm">npm</a></strong></p>
+
+<div class="highlight highlight-text-shell-session"><pre><span class="pl-mo">npm install react-i18n-map --save</span></pre></div>
+
+<p><strong>via <a href="https://yarnpkg.com/">yarn</a></strong></p>
+
+<div class="highlight highlight-text-shell-session"><pre><span class="pl-mo">yarn add react-i18n-map</span></pre></div>
+
+<h2>
+<a id="built-with" class="anchor" href="#built-with" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Built With</h2>
+
+<ul>
+<li>
+<a href="https://facebook.github.io/react/">React</a> - A javascript library for building User Interfaces</li>
+</ul>
+
+<h2>
+<a id="versioning" class="anchor" href="#versioning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Versioning</h2>
+
+<p>We use <a href="http://semver.org/">SemVer</a> for versioning. For the versions available, see the <a href="https://github.com/ayosdev/react-i18n-map/tags">tags on this repository</a>. </p>
+
+<h2>
+<a id="authors" class="anchor" href="#authors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors</h2>
+
+<ul>
+<li>
+<strong>Chris</strong> - <em>Initial work</em> - <a href="https://github.com/thisguychris">thisguychris</a>
+</li>
+</ul>
+
+<p>See also the list of <a href="https://github.com/ayosdev/react-i18n-map/contributors">contributors</a> who participated in this project.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>This project is licensed under the MIT License - see the <a href="LICENSE.md">LICENSE</a> file for details</p>
+
+<h2>
+<a id="acknowledgments" class="anchor" href="#acknowledgments" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Acknowledgments</h2>
+
+<ul>
+<li>Hat tip to <a href="https://github.com/ericf">ericf</a> for react-intl, our initial library of choice.</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/ayosdev/react-i18n-map/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/ayosdev/react-i18n-map/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/ayosdev/react-i18n-map"></a> is maintained by <a href="https://github.com/ayosdev">ayosdev</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
