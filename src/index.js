@@ -6,8 +6,8 @@ export class FormattedMessage extends React.Component {
     super()
   }
   render() {
-    let { message, values, tagName: Element } = this.props
-    message = template(message, values)
+    let { message, values, tagName: Element, ...rest } = this.props
+    message = template(message, values, rest)
     return <Element>{ message }</Element>
   }
 }
@@ -20,8 +20,8 @@ export class FormattedHTMLMessage extends React.Component {
   }
 
   render() {
-    let { message, values, tagName: Element } = this.props
-    message = template(message, values)
+    let { message, values, tagName: Element, ...rest } = this.props
+    message = template(message, values, rest)
     return <Element dangerouslySetInnerHTML={ {__html: message } } />
   }
 }

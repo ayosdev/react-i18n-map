@@ -2,7 +2,7 @@ function isObject(obj) {
   return obj === Object(obj);
 };
 
-export function template(message, values = {}){
+export function template(message, values = {}, rest = {}){
 
   if (!message) {
   	return ''
@@ -14,7 +14,20 @@ export function template(message, values = {}){
     Object.keys(values).forEach((item) => {
       message = message.split(`{${item}}`).join(values[item])
     })
+
+    return message
   }
+
+  if (isObject(rest) && Object.keys(rest).length > 0) {
+    // remove spaces
+    message = message.replace(/(\{)\s*(\S+)\s*(?=})/img, "$1$2");
+    Object.keys(rest).forEach((item) => {
+      message = message.split(`{${item}}`).join(rest[item])
+    })
+
+    return message
+  }
+
   return message
 }
 
