@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom/server'
 
 function isObject(obj) {
   return obj === Object(obj);
@@ -28,7 +27,7 @@ export function template(message, values = {}, rest = {}){
       let element = rest[item]
 
       if ( React.isValidElement(element) ) {
-        element = ReactDOM.renderToStaticMarkup( element )
+        element = React.renderToStaticMarkup( element )
       }
 
       message = message.split(`{${item}}`).join( element )
