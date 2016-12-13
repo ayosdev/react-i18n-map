@@ -1,4 +1,5 @@
 import { template } from './utils'
+import React from 'react'
 
 describe('template', () => {
 
@@ -39,6 +40,12 @@ describe('template', () => {
   test('returns interpolated message and discards rest props', () => {
     const actual = template('hello {foo}', { foo: 'test' }, { foo: 'world' })
     expect(actual).toBe('hello test')
+  })
+
+  test('returns interpolated message via rest props and is react element', () => {
+    const element = <span>test</span>
+    const actual = template('hello {foo}', {}, { foo: element })
+    expect(actual).toBe('hello <span>test</span>')
   })
 
 })

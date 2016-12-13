@@ -1,3 +1,6 @@
+import React from 'react'
+import ReactDOM from 'react-dom/server'
+
 function isObject(obj) {
   return obj === Object(obj);
 };
@@ -22,7 +25,13 @@ export function template(message, values = {}, rest = {}){
     // remove spaces
     message = message.replace(/(\{)\s*(\S+)\s*(?=})/img, "$1$2");
     Object.keys(rest).forEach((item) => {
-      message = message.split(`{${item}}`).join(rest[item])
+      let element = rest[item]
+
+      if ( React.isValidElement(element) ) {
+        element = ReactDOM.renderToStaticMarkup( element )
+      }
+
+      message = message.split(`{${item}}`).join( element )
     })
 
     return message

@@ -50,5 +50,8 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
+  },
+  "dependencies": {
+    "react-dom": "15.4.1"
   }
 }

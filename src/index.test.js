@@ -40,4 +40,16 @@ describe('FormattedHTMLMessage', () => {
     expect(wrapper.text()).toBe('hello world, yo chris')
   })
 
+  test('return interpolated message with with normal props', () => {
+    let wrapper = mount(<FormattedHTMLMessage message="hello {foo}, yo {bar}" foo="world" bar="chris" />);
+    expect(wrapper.text()).toBe('hello world, yo chris')
+  })
+
+  test('return interpolated message with with react element as props', () => {
+    const element = <span>chris</span>
+    let wrapper = mount(<FormattedHTMLMessage message="hello {foo}, yo {bar}" foo="world" bar={ element } />);
+    expect(wrapper.html()).toBe('<span>hello world, yo <span>chris</span></span>')
+  })
+
+
 })
