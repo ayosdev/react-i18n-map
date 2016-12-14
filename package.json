@@ -33,17 +33,17 @@
     "react": "^0.13.0"
   },
   "devDependencies": {
-    "babel-cli": "6.18.0",
-    "babel-jest": "17.0.2",
-    "babel-plugin-transform-object-rest-spread": "6.20.2",
-    "babel-preset-es2015": "6.18.0",
-    "babel-preset-latest": "6.16.0",
-    "babel-preset-react": "6.16.0",
-    "codecov": "1.0.1",
-    "enzyme": "2.6.0",
-    "jest": "17.0.3",
-    "react": "0.13.3",
-    "react-test-renderer": "1.1.0"
+    "babel-cli": "^6.18.0",
+    "babel-jest": "^17.0.2",
+    "babel-plugin-transform-object-rest-spread": "^6.20.2",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "codecov": "^1.0.1",
+    "enzyme": "^2.6.0",
+    "jest": "^17.0.3",
+    "react": "^0.13.3",
+    "react-test-renderer": "^1.1.0"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
