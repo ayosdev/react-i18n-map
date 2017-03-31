@@ -28,6 +28,10 @@ describe('FormattedHTMLMessage', () => {
     expect(wrapper.text()).toBe('')
   })
 
+  it('failing test', () => {
+    expect(false).toBe(true)
+  })
+
   it('allows us to set props', () => {
     const wrapper = mount(<FormattedHTMLMessage message="heya" />);
     expect(wrapper.props().message).toBe("heya");
