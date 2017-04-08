@@ -42,7 +42,7 @@
     "codecov": "^1.0.1",
     "enzyme": "^2.6.0",
     "jest": "^18.1.0",
-    "react": "^0.13.3",
+    "react": "^15.5.3",
     "react-test-renderer": "^1.1.0"
   },
   "jest": {
