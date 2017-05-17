@@ -41,7 +41,7 @@
     "babel-preset-react": "^6.16.0",
     "codecov": "^1.0.1",
     "enzyme": "^2.6.0",
-    "jest": "^18.1.0",
+    "jest": "^20.0.2",
     "react": "^0.13.3",
     "react-test-renderer": "^1.1.0"
   },
