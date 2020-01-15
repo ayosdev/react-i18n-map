@@ -1,55 +1,77 @@
-import React from 'react'
-import { FormattedMessage, FormattedHTMLMessage } from './index'
-import { shallow, mount } from 'enzyme'
+import React from "react";
+import { FormattedMessage, FormattedHTMLMessage } from "./index";
+import { render } from "@testing-library/react";
+import { toContainHTML } from "@testing-library/jest-dom";
 
-describe('FormattedMessage', () => {
-
-  test('return react component', () => {
-    let wrapper = shallow(<FormattedMessage message="hello" />);
-    expect(wrapper.contains("hello")).toBe(true)
-  })
-
-  test('return blank message', () => {
-    let wrapper = shallow(<FormattedMessage />);
-    expect(wrapper.text()).toBe('')
-  })
-
-  test('return interpolated message', () => {
-    let wrapper = shallow(<FormattedMessage message="hello {foo}" values={ { foo: 'world'} } />);
-    expect(wrapper.text()).toBe('hello world')
-  })
-
-})
-
-describe('FormattedHTMLMessage', () => {
-
-  test('return blank message', () => {
-    let wrapper = mount(<FormattedHTMLMessage />);
-    expect(wrapper.text()).toBe('')
-  })
-
-  it('allows us to set props', () => {
-    const wrapper = mount(<FormattedHTMLMessage message="heya" />);
-    expect(wrapper.props().message).toBe("heya");
-    wrapper.setProps({ message: "foo" });
-    expect(wrapper.props().message).toBe("foo");
+expect.extend({ toContainHTML });
+describe("FormattedMessage", () => {
+  test("return react component", () => {
+    let { getByText } = render(<FormattedMessage message="hello" />);
+    expect(getByText("hello")).toBeTruthy();
   });
 
-  test('return interpolated message', () => {
-    let wrapper = mount(<FormattedHTMLMessage message="hello {foo}, yo {bar}" values={ { foo: 'world', bar: 'chris'} } />);
-    expect(wrapper.text()).toBe('hello world, yo chris')
-  })
+  test("return blank message", () => {
+    let { container } = render(<FormattedMessage message="" />);
+    expect(container.querySelector("span").textContent).toBe("");
+  });
 
-  test('return interpolated message with with normal props', () => {
-    let wrapper = mount(<FormattedHTMLMessage message="hello {foo}, yo {bar}" foo="world" bar="chris" />);
-    expect(wrapper.text()).toBe('hello world, yo chris')
-  })
+  test("return interpolated message", () => {
+    let { container, getByText } = render(
+      <FormattedMessage message="hello {foo}" values={{ foo: "world" }} />
+    );
+    expect(getByText("hello world")).toBeTruthy();
+  });
+});
 
-  test('return interpolated message with with react element as props', () => {
-    const element = <span>chris</span>
-    let wrapper = mount(<FormattedHTMLMessage message="hello {foo}, yo {bar}" foo="world" bar={ element } />);
-    expect(wrapper.html()).toBe('<span>hello world, yo <span>chris</span></span>')
-  })
+describe("FormattedHTMLMessage", () => {
+  test("return blank message", () => {
+    let { container } = render(<FormattedHTMLMessage />);
+    expect(container.querySelector("span").textContent).toBe("");
+  });
 
+  it("allows us to set props", () => {
+    const { getByText, rerender } = render(
+      <FormattedHTMLMessage message="heya" />
+    );
+    expect(getByText("heya")).toBeTruthy();
 
-})
+    rerender(<FormattedHTMLMessage message="foo" />);
+    expect(getByText("foo")).toBeTruthy();
+  });
+
+  test("return interpolated message", () => {
+    let { getByText } = render(
+      <FormattedHTMLMessage
+        message="hello {foo}, yo {bar}"
+        values={{ foo: "world", bar: "chris" }}
+      />
+    );
+    expect(getByText("hello world, yo chris")).toBeTruthy();
+  });
+
+  test("return interpolated message with with normal props", () => {
+    let { getByText } = render(
+      <FormattedHTMLMessage
+        message="hello {foo}, yo {bar}"
+        foo="world"
+        bar="chris"
+      />
+    );
+
+    expect(getByText("hello world, yo chris")).toBeTruthy();
+  });
+
+  test("return interpolated message with with react element as props", () => {
+    const element = <span>chris</span>;
+    let { container, debug } = render(
+      <FormattedHTMLMessage
+        message="hello {foo}, yo {bar}"
+        foo="world"
+        bar={element}
+      />
+    );
+    expect(container.querySelector("span")).toContainHTML(
+      "<span>hello world, yo <span>chris</span></span>"
+    );
+  });
+});
