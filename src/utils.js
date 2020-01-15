@@ -1,45 +1,45 @@
-import React from 'react'
+import React from "react";
+import ReactDOMServer from "react-dom/server";
 
 function isObject(obj) {
   return obj === Object(obj);
-};
+}
 
-export function template(message, values = {}, rest = {}){
-
+export function template(message, values = {}, rest = {}) {
   if (!message) {
-  	return ''
+    return "";
   }
 
   if (isObject(values) && Object.keys(values).length > 0) {
     // remove spaces
-    message = message.replace(/(\{)\s*(\S+)\s*(?=})/img, "$1$2");
-    Object.keys(values).forEach((item) => {
-      message = message.split(`{${item}}`).join(values[item])
-    })
+    message = message.replace(/(\{)\s*(\S+)\s*(?=})/gim, "$1$2");
+    Object.keys(values).forEach(item => {
+      message = message.split(`{${item}}`).join(values[item]);
+    });
 
-    return message
+    return message;
   }
 
   if (isObject(rest) && Object.keys(rest).length > 0) {
     // remove spaces
-    message = message.replace(/(\{)\s*(\S+)\s*(?=})/img, "$1$2");
-    Object.keys(rest).forEach((item) => {
-      let element = rest[item]
+    message = message.replace(/(\{)\s*(\S+)\s*(?=})/gim, "$1$2");
+    Object.keys(rest).forEach(item => {
+      let element = rest[item];
 
-      if ( React.isValidElement(element) ) {
-        element = React.renderToStaticMarkup( element )
+      if (React.isValidElement(element)) {
+        element = ReactDOMServer.renderToStaticMarkup(element);
       }
 
-      message = message.split(`{${item}}`).join( element )
-    })
+      message = message.split(`{${item}}`).join(element);
+    });
 
-    return message
+    return message;
   }
 
-  return message
+  return message;
 }
 
 export let defaultProps = {
-  values : {},
-  tagName: 'span',
-}
+  values: {},
+  tagName: "span"
+};
