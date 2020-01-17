@@ -1,6 +1,6 @@
 import React from "react";
 import { FormattedMessage, FormattedHTMLMessage } from "./index";
-import render from "riteway/render-component";
+import render from "../util/render.js";
 import test from "jest-t-assert";
 
 test("FormattedMessage", t => {
