@@ -1,51 +1,23 @@
-import { template } from './utils'
-import React from 'react'
+import { template } from "./utils";
+import React from "react";
+import test from "jest-t-assert";
+import render from "riteway/render-component";
 
-describe('template', () => {
-
-	test('is function', () => {
-		expect(typeof template == 'function').toBe(true)
-	})
-
-	test('returns blank if message is blank', () => {
-		const actual = template('')
-		expect(actual).toBe('')
-	})
-
-	test('returns message', () => {
-		const actual = template('hello')
-		expect(actual).toBe('hello')
-	})
-
-	test('returns interpolated message', () => {
-		const actual = template('hello {foo}', { foo: 'world'})
-		expect(actual).toBe('hello world')
-	})
-
-  test('returns interpolated message with spaces', () => {
-    const actual = template('hello {   foo   }', { foo: 'world'})
-    expect(actual).toBe('hello world')
-  })
-
-	test('does not throw if value is not an object', () => {
-		const actual = template('hello world', 'test')
-		expect(actual).toBe('hello world')
-	})
-
-  test('returns interpolated message via rest props', () => {
-    const actual = template('hello {foo}', {}, { foo: 'world' })
-    expect(actual).toBe('hello world')
-  })
-
-  test('returns interpolated message and discards rest props', () => {
-    const actual = template('hello {foo}', { foo: 'test' }, { foo: 'world' })
-    expect(actual).toBe('hello test')
-  })
-
-  test('returns interpolated message via rest props and is react element', () => {
-    const element = <span>test</span>
-    const actual = template('hello {foo}', {}, { foo: element })
-    expect(actual).toBe('hello <span>test</span>')
-  })
-
-})
+test("template", t => {
+  t.deepEqual(typeof template, "function");
+  t.deepEqual(template(""), "");
+  t.deepEqual(template("hello"), "hello");
+  t.deepEqual(template("hello {foo}", { foo: "world" }), "hello world");
+  t.deepEqual(template("hello {   foo   }", { foo: "world" }), "hello world");
+  t.deepEqual(template("hello world", "test"), "hello world");
+  t.deepEqual(template("hello {foo}", {}, { foo: "world" }), "hello world");
+  t.deepEqual(
+    template("hello {foo}", { foo: "test" }, { foo: "world" }),
+    "hello test"
+  );
+  const element = render(<span>test</span>);
+  t.deepEqual(
+    template("hello {foo}", {}, { foo: element("body").html() }),
+    "hello <span>test</span>"
+  );
+});
