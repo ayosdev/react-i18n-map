@@ -15,9 +15,9 @@ test("template", t => {
     template("hello {foo}", { foo: "test" }, { foo: "world" }),
     "hello test"
   );
-  const element = render(<span>test</span>);
+  const element = <span>test</span>;
   t.deepEqual(
-    template("hello {foo}", {}, { foo: element("body").html() }),
+    template("hello {foo}", {}, { foo: element }),
     "hello <span>test</span>"
   );
 });
