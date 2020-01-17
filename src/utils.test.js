@@ -1,7 +1,6 @@
 import { template } from "./utils";
 import React from "react";
 import test from "jest-t-assert";
-import render from "riteway/render-component";
 
 test("template", t => {
   t.deepEqual(typeof template, "function");
