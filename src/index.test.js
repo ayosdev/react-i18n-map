@@ -1,77 +1,57 @@
 import React from "react";
 import { FormattedMessage, FormattedHTMLMessage } from "./index";
-import { render } from "@testing-library/react";
-import { toContainHTML } from "@testing-library/jest-dom";
+import render from "riteway/render-component";
+import test from "jest-t-assert";
 
-expect.extend({ toContainHTML });
-describe("FormattedMessage", () => {
-  test("return react component", () => {
-    let { getByText } = render(<FormattedMessage message="hello" />);
-    expect(getByText("hello")).toBeTruthy();
-  });
+test("FormattedMessage", t => {
+  let $ = render(<FormattedMessage message="hello" />);
+  t.deepEqual($("span").html(), "hello");
 
-  test("return blank message", () => {
-    let { container } = render(<FormattedMessage message="" />);
-    expect(container.querySelector("span").textContent).toBe("");
-  });
+  $ = render(<FormattedMessage message="" />);
+  t.deepEqual($("span").html(), "");
 
-  test("return interpolated message", () => {
-    let { container, getByText } = render(
-      <FormattedMessage message="hello {foo}" values={{ foo: "world" }} />
-    );
-    expect(getByText("hello world")).toBeTruthy();
-  });
+  $ = render(
+    <FormattedMessage message="hello {foo}" values={{ foo: "world" }} />
+  );
+  t.deepEqual($("span").html(), "hello world");
 });
 
-describe("FormattedHTMLMessage", () => {
-  test("return blank message", () => {
-    let { container } = render(<FormattedHTMLMessage />);
-    expect(container.querySelector("span").textContent).toBe("");
-  });
+test("FormattedHTMLMessage", t => {
+  let $ = render(<FormattedHTMLMessage />);
+  t.deepEqual($("span").html(), "");
 
-  it("allows us to set props", () => {
-    const { getByText, rerender } = render(
-      <FormattedHTMLMessage message="heya" />
-    );
-    expect(getByText("heya")).toBeTruthy();
+  $ = render(<FormattedHTMLMessage message="heya" />);
+  t.deepEqual($("span").html(), "heya");
 
-    rerender(<FormattedHTMLMessage message="foo" />);
-    expect(getByText("foo")).toBeTruthy();
-  });
+  $ = render(<FormattedHTMLMessage message="foo" />);
+  t.deepEqual($("span").html(), "foo");
 
-  test("return interpolated message", () => {
-    let { getByText } = render(
-      <FormattedHTMLMessage
-        message="hello {foo}, yo {bar}"
-        values={{ foo: "world", bar: "chris" }}
-      />
-    );
-    expect(getByText("hello world, yo chris")).toBeTruthy();
-  });
+  $ = render(
+    <FormattedHTMLMessage
+      message="hello {foo}, yo {bar}"
+      values={{ foo: "world", bar: "chris" }}
+    />
+  );
+  t.deepEqual($("span").html(), "hello world, yo chris");
 
-  test("return interpolated message with with normal props", () => {
-    let { getByText } = render(
-      <FormattedHTMLMessage
-        message="hello {foo}, yo {bar}"
-        foo="world"
-        bar="chris"
-      />
-    );
+  $ = render(
+    <FormattedHTMLMessage
+      message="hello {foo}, yo {bar}"
+      foo="world"
+      bar="chris"
+    />
+  );
 
-    expect(getByText("hello world, yo chris")).toBeTruthy();
-  });
+  t.deepEqual($("span").html(), "hello world, yo chris");
 
-  test("return interpolated message with with react element as props", () => {
-    const element = <span>chris</span>;
-    let { container, debug } = render(
-      <FormattedHTMLMessage
-        message="hello {foo}, yo {bar}"
-        foo="world"
-        bar={element}
-      />
-    );
-    expect(container.querySelector("span")).toContainHTML(
-      "<span>hello world, yo <span>chris</span></span>"
-    );
-  });
+  const element = render(<span>chris</span>);
+  $ = render(
+    <FormattedHTMLMessage
+      message="hello {foo}, yo {bar}"
+      foo="world"
+      bar={element.html()}
+    />
+  );
+
+  t.deepEqual($("span").html(), "hello world, yo <span>chris</span>");
 });
