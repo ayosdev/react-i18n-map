@@ -1,4 +1,4 @@
-iamport { template } from "./utils";
+import { template } from "./utils";
 import React from "react";
 
 describe("template", () => {
